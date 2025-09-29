@@ -1,0 +1,67 @@
+package com.mycompany.studentsystem;
+
+import java.awt.Color;
+import java.awt.GridLayout;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+
+/**
+ *
+ * @author 222830646
+ */
+public class StudentSystem extends JFrame {
+
+    //Add Panels
+    private JPanel pnlSystem = new JPanel();
+    private JPanel pnlLabel = new JPanel();
+    private JPanel pnlDetails = new JPanel();
+    private JPanel pnlButton = new JPanel();
+
+    //Add labels
+    private JLabel lblLogo = new JLabel("Login");
+    private JLabel lblUsername = new JLabel("Username: ");
+    private JLabel lblPassword = new JLabel("Password: ");
+
+    //Add TextFields
+    private JTextField txtUsername = new JTextField(15);
+    private JTextField txtPassword = new JTextField(15);
+
+    //Add Buttons
+    private JButton btnLogin = new JButton("Login");
+
+    public StudentSystem() {
+        super("Student System");
+        this.setLayout(new GridLayout(1, 1, 5, 5));
+        pnlSystem.setLayout(new GridLayout(3, 1, 5, 5));
+
+        pnlSystem.add(pnlLabel);
+        pnlSystem.add(pnlDetails);
+        pnlSystem.add(pnlButton);
+
+        pnlLabel.setLayout(new GridLayout(1, 1, 5, 5));
+        pnlLabel.setBackground(new Color(173, 216, 230));
+        pnlLabel.add(lblLogo);
+        lblLogo.setForeground(Color.red);
+        lblLogo.setFont(lblLogo.getFont().deriveFont(20f));
+        lblLogo.setHorizontalAlignment(JLabel.CENTER);
+
+        pnlDetails.setLayout(new GridLayout(2, 2, 5, 5));
+        pnlDetails.add(lblUsername);
+        pnlDetails.add(txtUsername);
+        pnlDetails.add(lblPassword);
+        pnlDetails.add(txtPassword);
+
+        pnlButton.setLayout(new GridLayout(1, 1, 5, 5));
+        pnlButton.add(btnLogin);
+        pnlButton.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER));
+        btnLogin.setPreferredSize(new java.awt.Dimension(80, 30));
+
+        this.add(pnlSystem);
+
+    }
+}
