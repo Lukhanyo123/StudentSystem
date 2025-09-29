@@ -1,0 +1,18 @@
+
+package com.mycompany.studentsystem;
+
+import javax.swing.JFrame;
+
+/**
+ *
+ * @author 222830646
+ */
+public class runStudentSystem {
+
+    public static void main(String[] args) {
+     StudentSystem guiObject = new StudentSystem();
+     guiObject.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+     guiObject.setBounds(100,200,700,500);
+     guiObject.setVisible(true);
+    }
+}
