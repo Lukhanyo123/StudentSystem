@@ -1,1 +1,27 @@
+package za.ac.cput.studentsystemclient;
+
+import java.io.*;
+import java.net.*;
+
+/**
+ * Simple client that sends selected course data to the server.
+ */
+public class Client {
+
+    public static String sendCourseToServer(String courseInfo) {
+        String response = "";
+        try (Socket socket = new Socket("localhost", 5000)) {
+            PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+            writer.println(courseInfo);
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            response = reader.readLine();
+
+        } catch (IOException e) {
+            response = "Error: " + e.getMessage();
+        }
+
+        return response;
+    }
+}
 
