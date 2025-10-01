@@ -1,0 +1,68 @@
+
+package com.mycompany.studentsystemclient;
+
+import java.awt.Color;
+import java.awt.GridLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ *
+ * @author 222830646
+ */
+public class StudentPage extends JFrame {
+    private JPanel pnlPage = new JPanel();
+    private JPanel pnlLabel = new JPanel();
+    private JPanel pnlChoose = new JPanel();
+    private JPanel pnlDisplay = new JPanel();
+    private JPanel pnlButton = new JPanel();
+    
+    private JLabel lblLogo = new JLabel("STUDENT");
+    
+    private JTextField txtDisplay = new JTextField();
+    
+    private JTable tblCourse = new JTable();
+    private DefaultTableModel modelCourse = new DefaultTableModel();
+    
+    private JButton btnEnroll = new JButton("Enroll"); 
+    private JButton btnDisplay = new JButton("Display Enrollments");
+    
+    
+    
+    public StudentPage(){
+        super("Student System");
+        this.setLayout(new GridLayout(1,1,5,5));
+        pnlPage.setLayout(new GridLayout(4,1,5,5));
+        pnlPage.add(pnlLabel);
+        pnlPage.add(pnlChoose);
+        pnlPage.add(pnlDisplay);
+        pnlPage.add(pnlButton);
+        pnlLabel.setLayout(new GridLayout(1,1,5,5));
+        pnlLabel.setBackground(new Color(173, 216, 230));
+        lblLogo.setFont(lblLogo.getFont().deriveFont(20f));
+        lblLogo.setHorizontalAlignment(JLabel.CENTER);
+        pnlLabel.add(lblLogo);
+        
+        pnlChoose.setLayout(new GridLayout(1,1,5,5));
+        pnlChoose.add(tblCourse);
+        
+        pnlDisplay.setLayout(new GridLayout(1,1,5,5));
+        pnlDisplay.add(txtDisplay);
+        
+        pnlButton.setLayout(new GridLayout(1,2,5,5));
+        pnlButton.add(btnEnroll);
+        pnlButton.add(btnDisplay);
+        
+        this.add(pnlPage);
+        
+        
+        
+        
+    
+}
+}
