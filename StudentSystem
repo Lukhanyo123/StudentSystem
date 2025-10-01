@@ -1,4 +1,4 @@
-package com.mycompany.studentsystem;
+package za.ac.cput.studentsystemclient;
 
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -32,7 +32,7 @@ public class StudentSystem extends JFrame {
     private JTextField txtPassword = new JTextField(15);
 
     //Add Buttons
-    private JButton btnLogin = new JButton("Login");
+    private JButton btnLogin = new JButton("LOGIN");
 
     public StudentSystem() {
         super("Student System");
@@ -46,7 +46,6 @@ public class StudentSystem extends JFrame {
         pnlLabel.setLayout(new GridLayout(1, 1, 5, 5));
         pnlLabel.setBackground(new Color(173, 216, 230));
         pnlLabel.add(lblLogo);
-        lblLogo.setForeground(Color.red);
         lblLogo.setFont(lblLogo.getFont().deriveFont(20f));
         lblLogo.setHorizontalAlignment(JLabel.CENTER);
 
@@ -59,7 +58,7 @@ public class StudentSystem extends JFrame {
         pnlButton.setLayout(new GridLayout(1, 1, 5, 5));
         pnlButton.add(btnLogin);
         pnlButton.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER));
-        btnLogin.setPreferredSize(new java.awt.Dimension(80, 30));
+        btnLogin.setPreferredSize(new java.awt.Dimension(100, 50));
 
         this.add(pnlSystem);
 
