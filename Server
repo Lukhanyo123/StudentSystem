@@ -1,1 +1,37 @@
+package za.ac.cput.studentsystemserver;
+
+import java.io.*;
+import java.net.*;
+
+/**
+ * 
+ */
+public class Server {
+
+    public static void main(String[] args) {
+        int port = 5000;
+
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
+            System.out.println("Server started. Listening on port " + port + "...");
+
+            while (true) {
+                Socket socket = serverSocket.accept();
+                System.out.println("Client connected: " + socket.getInetAddress());
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                String received = reader.readLine();
+
+                System.out.println("Received from client: " + received);
+
+                // Respond to client
+                PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+                writer.println("Enrollment confirmed for: " + received);
+
+                socket.close(); // Close client socket after handling
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
 
