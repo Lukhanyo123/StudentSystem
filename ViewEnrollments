@@ -1,1 +1,96 @@
 
+package za.ac.cput.studentsystemclient;
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import static java.awt.SystemColor.menu;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+/**
+ *
+ * @author 222830646
+ */
+public class ViewEnrollmentsPage extends JFrame implements ActionListener {
+
+    private JPanel pnlPage = new JPanel();
+    private JPanel pnlLabel = new JPanel();
+    private JPanel pnlDisplay = new JPanel();
+    private JPanel pnlButton = new JPanel();
+
+    private JLabel lblLogo = new JLabel("ADMIN");
+
+    private JTextField txtDisplay = new JTextField();
+
+    private JButton btnRefresh = new JButton("Refresh Data");
+
+    private JMenuBar menuBar = new JMenuBar();
+
+    private JMenu menu = new JMenu("Menu");
+
+    public ViewEnrollmentsPage() {
+        super("Student System");
+        this.setLayout(new GridLayout(1, 1, 5, 5));
+        pnlPage.setLayout(new GridLayout(3, 1, 5, 5));
+        pnlPage.add(pnlLabel);
+        pnlPage.add(pnlDisplay);
+        pnlPage.add(pnlButton);
+
+        pnlLabel.setLayout(new GridLayout(1, 1, 5, 5));
+        pnlLabel.setBackground(new Color(173, 216, 230));
+        lblLogo.setFont(lblLogo.getFont().deriveFont(Font.BOLD, 24f));
+        lblLogo.setHorizontalAlignment(JLabel.CENTER);
+        pnlLabel.add(lblLogo);
+
+        JMenuItem menuAddStudent = new JMenuItem("Add Student");
+        JMenuItem menuAddCourse = new JMenuItem("Add Course");
+        JMenuItem menuViewEnrollments = new JMenuItem("View Enrollments");
+
+        menuAddStudent.addActionListener(this);
+        menuAddCourse.addActionListener(this);
+        menuViewEnrollments.addActionListener(this);
+
+        menu.add(menuAddStudent);
+        menu.add(menuAddCourse);
+        menu.add(menuViewEnrollments);
+
+        menuBar.add(menu);
+
+        pnlDisplay.setLayout(new GridLayout(1, 1, 5, 5));
+        pnlDisplay.add(txtDisplay);
+        txtDisplay.setEditable(false);
+
+        pnlButton.setLayout(new GridLayout(1, 1, 5, 5));
+        pnlButton.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        pnlButton.add(btnRefresh);
+
+        btnRefresh.setBackground(new Color(60, 178, 114));
+        btnRefresh.setForeground(Color.WHITE);
+        btnRefresh.setFocusPainted(false);
+        btnRefresh.setFont(new Font("SansSerif", Font.BOLD, 16));
+
+        this.setJMenuBar(menuBar);
+        this.add(pnlPage);
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        new AddStudentPage().setVisible(true);
+        dispose();
+
+        new AddCoursePage().setVisible(true);
+        dispose();
+        
+    }
+}
