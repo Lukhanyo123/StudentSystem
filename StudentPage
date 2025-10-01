@@ -1,8 +1,9 @@
-
-package com.mycompany.studentsystemclient;
+package za.ac.cput.studentsystemclient;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Font;
+import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,6 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -32,37 +36,68 @@ public class StudentPage extends JFrame {
     private JButton btnEnroll = new JButton("Enroll"); 
     private JButton btnDisplay = new JButton("Display Enrollments");
     
-    
-    
-    public StudentPage(){
+    public StudentPage() {
         super("Student System");
-        this.setLayout(new GridLayout(1,1,5,5));
-        pnlPage.setLayout(new GridLayout(4,1,5,5));
+        this.setLayout(new GridLayout(1, 1, 5, 5));
+        pnlPage.setLayout(new GridLayout(4, 1, 5, 5));
         pnlPage.add(pnlLabel);
         pnlPage.add(pnlChoose);
         pnlPage.add(pnlDisplay);
         pnlPage.add(pnlButton);
-        pnlLabel.setLayout(new GridLayout(1,1,5,5));
+
+        // Panel: Label
+        pnlLabel.setLayout(new GridLayout(1, 1, 5, 5));
         pnlLabel.setBackground(new Color(173, 216, 230));
-        lblLogo.setFont(lblLogo.getFont().deriveFont(20f));
+        lblLogo.setFont(lblLogo.getFont().deriveFont(Font.BOLD, 24f));
         lblLogo.setHorizontalAlignment(JLabel.CENTER);
         pnlLabel.add(lblLogo);
-        
-        pnlChoose.setLayout(new GridLayout(1,1,5,5));
-        pnlChoose.add(tblCourse);
-        
-        pnlDisplay.setLayout(new GridLayout(1,1,5,5));
+
+        // Panel: Choose - Course Table
+        pnlChoose.setLayout(new GridLayout(1, 1, 5, 5));
+        modelCourse.addColumn("Course ID");
+        modelCourse.addColumn("Course Name");
+        modelCourse.addColumn("Credits");
+
+        // Sample Course Data
+        modelCourse.addRow(new Object[]{"C101", "Computer Science", 12});
+        modelCourse.addRow(new Object[]{"C102", "Mathematics", 10});
+        modelCourse.addRow(new Object[]{"C103", "Physics", 8});
+        modelCourse.addRow(new Object[]{"C104", "Chemistry", 10});
+        modelCourse.addRow(new Object[]{"C105", "Software Engineering", 14});
+
+        tblCourse.setModel(modelCourse);
+        tblCourse.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JScrollPane scrollPane = new JScrollPane(tblCourse);
+        pnlChoose.add(scrollPane);
+
+        // Panel: Display text
+        pnlDisplay.setLayout(new GridLayout(1, 1, 5, 5));
         pnlDisplay.add(txtDisplay);
-        
-        pnlButton.setLayout(new GridLayout(1,2,5,5));
+        txtDisplay.setEditable(false);
+        txtDisplay.setFont(new Font("Arial", Font.PLAIN, 14));
+        txtDisplay.setBackground(new Color(245, 245, 245));
+        txtDisplay.setBorder(new EmptyBorder(5, 10, 5, 10));
+
+        // Panel: Buttons
+        pnlButton.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        btnEnroll.setPreferredSize(new java.awt.Dimension(200, 50));
+        btnDisplay.setPreferredSize(new java.awt.Dimension(200, 50));
+
+        btnEnroll.setBackground(new Color(100, 149, 237));
+        btnEnroll.setForeground(Color.WHITE);
+        btnEnroll.setFocusPainted(false);
+        btnEnroll.setFont(new Font("SansSerif", Font.BOLD, 16));
+
+        btnDisplay.setBackground(new Color(60, 179, 113));
+        btnDisplay.setForeground(Color.WHITE);
+        btnDisplay.setFocusPainted(false);
+        btnDisplay.setFont(new Font("SansSerif", Font.BOLD, 16));
+
         pnlButton.add(btnEnroll);
         pnlButton.add(btnDisplay);
-        
+
         this.add(pnlPage);
-        
-        
-        
-        
-    
-}
+
+       
+    }
 }
