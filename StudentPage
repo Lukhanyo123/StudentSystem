@@ -49,20 +49,20 @@ public class StudentPage extends JFrame implements ActionListener {
         pnlPage.add(pnlDisplay);
         pnlPage.add(pnlButton);
 
-        // Panel: Label
+       
         pnlLabel.setLayout(new GridLayout(1, 1, 5, 5));
         pnlLabel.setBackground(new Color(173, 216, 230));
         lblLogo.setFont(lblLogo.getFont().deriveFont(Font.BOLD, 24f));
         lblLogo.setHorizontalAlignment(JLabel.CENTER);
         pnlLabel.add(lblLogo);
 
-        // Panel: Choose - Course Table
+        
         pnlChoose.setLayout(new GridLayout(1, 1, 5, 5));
         modelCourse.addColumn("Course ID");
         modelCourse.addColumn("Course Name");
         modelCourse.addColumn("Credits");
 
-        // Sample Course Data
+        
         modelCourse.addRow(new Object[]{"C101", "Computer Science", 12});
         modelCourse.addRow(new Object[]{"C102", "Mathematics", 10});
         modelCourse.addRow(new Object[]{"C103", "Physics", 8});
@@ -74,7 +74,7 @@ public class StudentPage extends JFrame implements ActionListener {
         JScrollPane scrollPane = new JScrollPane(tblCourse);
         pnlChoose.add(scrollPane);
 
-        // Panel: Display text
+    
         pnlDisplay.setLayout(new GridLayout(1, 1, 5, 5));
         pnlDisplay.add(txtDisplay);
         txtDisplay.setEditable(false);
@@ -82,7 +82,7 @@ public class StudentPage extends JFrame implements ActionListener {
         txtDisplay.setBackground(new Color(245, 245, 245));
         txtDisplay.setBorder(new EmptyBorder(5, 10, 5, 10));
 
-        // Panel: Buttons
+        
         pnlButton.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
         btnEnroll.setPreferredSize(new java.awt.Dimension(200, 50));
         btnDisplay.setPreferredSize(new java.awt.Dimension(200, 50));
