@@ -1,1 +1,77 @@
 
+package za.ac.cput.studentsystemclient;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class AdminDashboard extends JFrame implements ActionListener {
+
+    private JPanel pnlPage = new JPanel();
+    private JPanel pnlLabel = new JPanel();
+    private JPanel pnlTabs = new JPanel();
+
+    private JLabel lblLogo = new JLabel("ADMIN DASHBOARD");
+
+    private JButton btnAddStudent = new JButton("Add Student");
+    private JButton btnAddCourse = new JButton("Add Course");
+    private JButton btnViewEnrollment = new JButton("View Enrollment");
+
+    public AdminDashboard() {
+        super("Student System");
+        this.setLayout(new GridLayout(1, 1, 5, 5));
+        pnlPage.setLayout(new GridLayout(2, 1, 5, 5));
+        pnlPage.add(pnlLabel);
+        pnlPage.add(pnlTabs);
+
+        pnlLabel.setLayout(new GridLayout(1, 1, 5, 5));
+        pnlLabel.setBackground(new Color(173, 216, 230));
+        lblLogo.setFont(lblLogo.getFont().deriveFont(Font.BOLD, 28f));
+        lblLogo.setHorizontalAlignment(JLabel.CENTER);
+        pnlLabel.add(lblLogo);
+
+        pnlTabs.setLayout(new GridLayout(1, 3, 20, 20));
+        btnAddStudent.setFont(new Font("Arial", Font.PLAIN, 18));
+        btnAddCourse.setFont(new Font("Arial", Font.PLAIN, 18));
+        btnViewEnrollment.setFont(new Font("Arial", Font.PLAIN, 18));
+
+        pnlTabs.add(btnAddStudent);
+        pnlTabs.add(btnAddCourse);
+        pnlTabs.add(btnViewEnrollment);
+
+        this.add(pnlPage);
+
+        btnAddStudent.addActionListener(this);
+
+        btnAddCourse.addActionListener(this);
+
+        btnViewEnrollment.addActionListener(this);
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        AddStudentPage addStudentPage = new AddStudentPage();
+        addStudentPage.setBounds(100, 200, 700, 500);
+        addStudentPage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        addStudentPage.setVisible(true);
+
+        AddCoursePage addCoursePage = new AddCoursePage();
+        addCoursePage.setBounds(100, 200, 700, 500);
+        addCoursePage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        addCoursePage.setVisible(true);
+
+        ViewEnrollmentsPage viewEnrollmentsPage = new ViewEnrollmentsPage();
+        viewEnrollmentsPage.setBounds(100, 200, 700, 500);
+        viewEnrollmentsPage.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        viewEnrollmentsPage.setVisible(true);
+
+    }
+
+}
