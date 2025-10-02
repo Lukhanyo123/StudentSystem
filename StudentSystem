@@ -2,19 +2,16 @@ package za.ac.cput.studentsystemclient;
 
 import java.awt.Color;
 import java.awt.GridLayout;
-import javax.swing.BorderFactory;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author 222830646
- */
-public class StudentSystem extends JFrame {
+public class StudentSystem extends JFrame implements ActionListener{
 
     //Add Panels
     private JPanel pnlSystem = new JPanel();
@@ -62,5 +59,33 @@ public class StudentSystem extends JFrame {
 
         this.add(pnlSystem);
 
+        btnLogin.addActionListener(this);
+            
+        
     }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+       String username = txtUsername.getText();
+            String password = txtPassword.getText();
+
+            // Hardcoded role check (replace with DB later)
+            if (username.equalsIgnoreCase("admin") && password.equals("admin123")) {
+                AdminDashboard adminDashboard = new AdminDashboard();
+                adminDashboard.setBounds(100, 200, 700, 500);
+                adminDashboard.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                adminDashboard.setVisible(true);
+                this.dispose();
+            } 
+            else if (username.equalsIgnoreCase("student") && password.equals("student123")) {
+                StudentPage studentPage = new StudentPage();
+                studentPage.setBounds(100, 200, 700, 500);
+                studentPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                studentPage.setVisible(true);
+                this.dispose();
+            } 
+            else {
+                JOptionPane.showMessageDialog(this, "Invalid username or password!");
+            }
+}
 }
